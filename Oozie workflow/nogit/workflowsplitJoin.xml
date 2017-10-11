@@ -1,0 +1,394 @@
+<workflow-app name='DataCleaningProcess' xmlns='uri:oozie:workflow:0.1'>
+    <start to='SparkCleanProcess0' />
+    <action name='SparkCleanProcess0'>
+        <spark xmlns="uri:oozie:spark-action:0.1">
+              <job-tracker>${jobTracker}</job-tracker>
+              <name-node>${nameNode}</name-node>
+              <prepare>
+                     <delete path='${outputDir}' />
+              </prepare>
+              <master>${master}</master>
+              <name>${name}</name>
+              <class>${MainClass}</class>
+              <jar>${jar}</jar>
+              <spark-opts>--num-executors 4 --queue default</spark-opts>
+              <arg>--inputDataPath</arg>
+              <arg>${inputDataPath}</arg>
+              <arg>--outputPath</arg>
+              <arg>${outputPath}</arg>
+              <arg>--stringPattern</arg>
+              <arg>${stringPattern}</arg>
+        </spark>
+        <ok to='startjoin' />
+        <error to='kill' />
+    </action>
+    <action name='SparkKmeanProcess1'>
+        <spark xmlns="uri:oozie:spark-action:0.1">
+              <job-tracker>${jobTracker}</job-tracker>
+              <name-node>${nameNode}</name-node>
+              <prepare>
+                     <delete path='${outputDir}' />
+              </prepare>
+              <master>${master}</master>
+              <name>${name}</name>
+              <class>${MainClass}</class>
+              <jar>${jar}</jar>
+              <spark-opts>--num-executors 4 --queue default</spark-opts>
+              <arg>--maxIterations</arg>
+              <arg>${maxIterations}</arg>
+              <arg>--inputPath</arg>
+              <arg>${inputPath}</arg>
+              <arg>--outputPath</arg>
+              <arg>${outputPath}</arg>
+              <arg>--k</arg>
+              <arg>1</arg>
+              <arg>--initSteps</arg>
+              <arg>${initSteps}</arg>
+              <arg>--initMode</arg>
+              <arg>${initMode}</arg>
+              <arg>--tol</arg>
+              <arg>${tol}</arg>
+              <arg>--seed</arg>
+              <arg>${seed}</arg>
+        </spark>
+        <ok to='join' />
+        <error to='kill' />
+    </action>
+    <action name='SparkKmeanProcess2'>
+        <spark xmlns="uri:oozie:spark-action:0.1">
+              <job-tracker>${jobTracker}</job-tracker>
+              <name-node>${nameNode}</name-node>
+              <prepare>
+                     <delete path='${outputDir}' />
+              </prepare>
+              <master>${master}</master>
+              <name>${name}</name>
+              <class>${MainClass}</class>
+              <jar>${jar}</jar>
+              <spark-opts>--num-executors 4 --queue default</spark-opts>
+              <arg>--maxIterations</arg>
+              <arg>${maxIterations}</arg>
+              <arg>--inputPath</arg>
+              <arg>${inputPath}</arg>
+              <arg>--outputPath</arg>
+              <arg>${outputPath}</arg>
+              <arg>--k</arg>
+              <arg>2</arg>
+              <arg>--initSteps</arg>
+              <arg>${initSteps}</arg>
+              <arg>--initMode</arg>
+              <arg>${initMode}</arg>
+              <arg>--tol</arg>
+              <arg>${tol}</arg>
+              <arg>--seed</arg>
+              <arg>${seed}</arg>
+        </spark>
+        <ok to='join' />
+        <error to='kill' />
+    </action>
+    <action name='SparkKmeanProcess3'>
+        <spark xmlns="uri:oozie:spark-action:0.1">
+              <job-tracker>${jobTracker}</job-tracker>
+              <name-node>${nameNode}</name-node>
+              <prepare>
+                     <delete path='${outputDir}' />
+              </prepare>
+              <master>${master}</master>
+              <name>${name}</name>
+              <class>${MainClass}</class>
+              <jar>${jar}</jar>
+              <spark-opts>--num-executors 4 --queue default</spark-opts>
+              <arg>--maxIterations</arg>
+              <arg>${maxIterations}</arg>
+              <arg>--inputPath</arg>
+              <arg>${inputPath}</arg>
+              <arg>--outputPath</arg>
+              <arg>${outputPath}</arg>
+              <arg>--k</arg>
+              <arg>3</arg>
+              <arg>--initSteps</arg>
+              <arg>${initSteps}</arg>
+              <arg>--initMode</arg>
+              <arg>${initMode}</arg>
+              <arg>--tol</arg>
+              <arg>${tol}</arg>
+              <arg>--seed</arg>
+              <arg>${seed}</arg>
+        </spark>
+        <ok to='join' />
+        <error to='kill' />
+    </action>
+    <action name='SparkKmeanProcess4'>
+        <spark xmlns="uri:oozie:spark-action:0.1">
+              <job-tracker>${jobTracker}</job-tracker>
+              <name-node>${nameNode}</name-node>
+              <prepare>
+                     <delete path='${outputDir}' />
+              </prepare>
+              <master>${master}</master>
+              <name>${name}</name>
+              <class>${MainClass}</class>
+              <jar>${jar}</jar>
+              <spark-opts>--num-executors 4 --queue default</spark-opts>
+              <arg>--maxIterations</arg>
+              <arg>${maxIterations}</arg>
+              <arg>--inputPath</arg>
+              <arg>${inputPath}</arg>
+              <arg>--outputPath</arg>
+              <arg>${outputPath}</arg>
+              <arg>--k</arg>
+              <arg>4</arg>
+              <arg>--initSteps</arg>
+              <arg>${initSteps}</arg>
+              <arg>--initMode</arg>
+              <arg>${initMode}</arg>
+              <arg>--tol</arg>
+              <arg>${tol}</arg>
+              <arg>--seed</arg>
+              <arg>${seed}</arg>
+        </spark>
+        <ok to='join' />
+        <error to='kill' />
+    </action>
+    <action name='SparkKmeanProcess5'>
+        <spark xmlns="uri:oozie:spark-action:0.1">
+              <job-tracker>${jobTracker}</job-tracker>
+              <name-node>${nameNode}</name-node>
+              <prepare>
+                     <delete path='${outputDir}' />
+              </prepare>
+              <master>${master}</master>
+              <name>${name}</name>
+              <class>${MainClass}</class>
+              <jar>${jar}</jar>
+              <spark-opts>--num-executors 4 --queue default</spark-opts>
+              <arg>--maxIterations</arg>
+              <arg>${maxIterations}</arg>
+              <arg>--inputPath</arg>
+              <arg>${inputPath}</arg>
+              <arg>--outputPath</arg>
+              <arg>${outputPath}</arg>
+              <arg>--k</arg>
+              <arg>5</arg>
+              <arg>--initSteps</arg>
+              <arg>${initSteps}</arg>
+              <arg>--initMode</arg>
+              <arg>${initMode}</arg>
+              <arg>--tol</arg>
+              <arg>${tol}</arg>
+              <arg>--seed</arg>
+              <arg>${seed}</arg>
+        </spark>
+        <ok to='join' />
+        <error to='kill' />
+    </action>
+    <action name='SparkKmeanProcess6'>
+        <spark xmlns="uri:oozie:spark-action:0.1">
+              <job-tracker>${jobTracker}</job-tracker>
+              <name-node>${nameNode}</name-node>
+              <prepare>
+                     <delete path='${outputDir}' />
+              </prepare>
+              <master>${master}</master>
+              <name>${name}</name>
+              <class>${MainClass}</class>
+              <jar>${jar}</jar>
+              <spark-opts>--num-executors 4 --queue default</spark-opts>
+              <arg>--maxIterations</arg>
+              <arg>${maxIterations}</arg>
+              <arg>--inputPath</arg>
+              <arg>${inputPath}</arg>
+              <arg>--outputPath</arg>
+              <arg>${outputPath}</arg>
+              <arg>--k</arg>
+              <arg>6</arg>
+              <arg>--initSteps</arg>
+              <arg>${initSteps}</arg>
+              <arg>--initMode</arg>
+              <arg>${initMode}</arg>
+              <arg>--tol</arg>
+              <arg>${tol}</arg>
+              <arg>--seed</arg>
+              <arg>${seed}</arg>
+        </spark>
+        <ok to='join' />
+        <error to='kill' />
+    </action>
+    <action name='SparkKmeanProcess7'>
+        <spark xmlns="uri:oozie:spark-action:0.1">
+              <job-tracker>${jobTracker}</job-tracker>
+              <name-node>${nameNode}</name-node>
+              <prepare>
+                     <delete path='${outputDir}' />
+              </prepare>
+              <master>${master}</master>
+              <name>${name}</name>
+              <class>${MainClass}</class>
+              <jar>${jar}</jar>
+              <spark-opts>--num-executors 4 --queue default</spark-opts>
+              <arg>--maxIterations</arg>
+              <arg>${maxIterations}</arg>
+              <arg>--inputPath</arg>
+              <arg>${inputPath}</arg>
+              <arg>--outputPath</arg>
+              <arg>${outputPath}</arg>
+              <arg>--k</arg>
+              <arg>7</arg>
+              <arg>--initSteps</arg>
+              <arg>${initSteps}</arg>
+              <arg>--initMode</arg>
+              <arg>${initMode}</arg>
+              <arg>--tol</arg>
+              <arg>${tol}</arg>
+              <arg>--seed</arg>
+              <arg>${seed}</arg>
+        </spark>
+        <ok to='join' />
+        <error to='kill' />
+    </action>
+    <action name='SparkKmeanProcess8'>
+        <spark xmlns="uri:oozie:spark-action:0.1">
+              <job-tracker>${jobTracker}</job-tracker>
+              <name-node>${nameNode}</name-node>
+              <prepare>
+                     <delete path='${outputDir}' />
+              </prepare>
+              <master>${master}</master>
+              <name>${name}</name>
+              <class>${MainClass}</class>
+              <jar>${jar}</jar>
+              <spark-opts>--num-executors 4 --queue default</spark-opts>
+              <arg>--maxIterations</arg>
+              <arg>${maxIterations}</arg>
+              <arg>--inputPath</arg>
+              <arg>${inputPath}</arg>
+              <arg>--outputPath</arg>
+              <arg>${outputPath}</arg>
+              <arg>--k</arg>
+              <arg>8</arg>
+              <arg>--initSteps</arg>
+              <arg>${initSteps}</arg>
+              <arg>--initMode</arg>
+              <arg>${initMode}</arg>
+              <arg>--tol</arg>
+              <arg>${tol}</arg>
+              <arg>--seed</arg>
+              <arg>${seed}</arg>
+        </spark>
+        <ok to='join' />
+        <error to='kill' />
+    </action>
+    <action name='SparkKmeanProcess9'>
+        <spark xmlns="uri:oozie:spark-action:0.1">
+              <job-tracker>${jobTracker}</job-tracker>
+              <name-node>${nameNode}</name-node>
+              <prepare>
+                     <delete path='${outputDir}' />
+              </prepare>
+              <master>${master}</master>
+              <name>${name}</name>
+              <class>${MainClass}</class>
+              <jar>${jar}</jar>
+              <spark-opts>--num-executors 4 --queue default</spark-opts>
+              <arg>--maxIterations</arg>
+              <arg>${maxIterations}</arg>
+              <arg>--inputPath</arg>
+              <arg>${inputPath}</arg>
+              <arg>--outputPath</arg>
+              <arg>${outputPath}</arg>
+              <arg>--k</arg>
+              <arg>9</arg>
+              <arg>--initSteps</arg>
+              <arg>${initSteps}</arg>
+              <arg>--initMode</arg>
+              <arg>${initMode}</arg>
+              <arg>--tol</arg>
+              <arg>${tol}</arg>
+              <arg>--seed</arg>
+              <arg>${seed}</arg>
+        </spark>
+        <ok to='join' />
+        <error to='kill' />
+    </action>
+    <action name='SparkKmeanProcess10'>
+        <spark xmlns="uri:oozie:spark-action:0.1">
+              <job-tracker>${jobTracker}</job-tracker>
+              <name-node>${nameNode}</name-node>
+              <prepare>
+                     <delete path='${outputDir}' />
+              </prepare>
+              <master>${master}</master>
+              <name>${name}</name>
+              <class>${MainClass}</class>
+              <jar>${jar}</jar>
+              <spark-opts>--num-executors 4 --queue default</spark-opts>
+              <arg>--maxIterations</arg>
+              <arg>${maxIterations}</arg>
+              <arg>--inputPath</arg>
+              <arg>${inputPath}</arg>
+              <arg>--outputPath</arg>
+              <arg>${outputPath}</arg>
+              <arg>--k</arg>
+              <arg>10</arg>
+              <arg>--initSteps</arg>
+              <arg>${initSteps}</arg>
+              <arg>--initMode</arg>
+              <arg>${initMode}</arg>
+              <arg>--tol</arg>
+              <arg>${tol}</arg>
+              <arg>--seed</arg>
+              <arg>${seed}</arg>
+        </spark>
+        <ok to='join' />
+        <error to='kill' />
+    </action>
+    <fork name="startjoin">
+        <path start='SparkKmeanProcess1'>
+        <path start='SparkKmeanProcess2'>
+        <path start='SparkKmeanProcess3'>
+        <path start='SparkKmeanProcess4'>
+        <path start='SparkKmeanProcess5'>
+        <path start='SparkKmeanProcess6'>
+        <path start='SparkKmeanProcess7'>
+        <path start='SparkKmeanProcess8'>
+        <path start='SparkKmeanProcess9'>
+        <path start='SparkKmeanProcess10'>
+    </fork>
+    <join name='join' to='SparkKmeanProcess11'/>
+    <action name='SparkKmeanProcess11'>
+        <spark xmlns="uri:oozie:spark-action:0.1">
+              <job-tracker>${jobTracker}</job-tracker>
+              <name-node>${nameNode}</name-node>
+              <prepare>
+                     <delete path='${outputDir}' />
+              </prepare>
+              <master>${master}</master>
+              <name>${name}</name>
+              <class>${MainClass}</class>
+              <jar>${jar}</jar>
+              <spark-opts>--num-executors 4 --queue default</spark-opts>
+              <arg>--maxIterations</arg>
+              <arg>${maxIterations}</arg>
+              <arg>--inputPath</arg>
+              <arg>${inputPath}</arg>
+              <arg>--outputPath</arg>
+              <arg>${outputPath}</arg>
+              <arg>--K</arg>
+              <arg>5</arg>
+              <arg>--initSteps</arg>
+              <arg>${initSteps}</arg>
+              <arg>--initMode</arg>
+              <arg>${initMode}</arg>
+              <arg>--tol</arg>
+              <arg>${tol}</arg>
+              <arg>--seed</arg>
+              <arg>${seed}</arg>
+        </spark>
+        <ok to='end' />
+        <error to='kill' />
+    </action>
+	<kill name="kill">
+		<message>Task failed, error message[${wf:errorMessage()}]</message>
+	</kill>
+	<end name='end'/>
+</workflow-app>

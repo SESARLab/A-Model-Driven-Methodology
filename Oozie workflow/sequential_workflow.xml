@@ -1,0 +1,61 @@
+<workflow-app name='DataCleaningProcess' xmlns='uri:oozie:workflow:0.1'>
+    <start to='SparkCleanProcess0' />
+    <action name='SparkCleanProcess0'>
+        <spark xmlns="uri:oozie:spark-action:0.1">
+              <job-tracker>${jobTracker}</job-tracker>
+              <name-node>${nameNode}</name-node>
+              <prepare>
+                     <delete path='${outputDir}' />
+              </prepare>
+              <master>${master}</master>
+              <name>${name}</name>
+              <class>${MainClass}</class>
+              <jar>${jar}</jar>
+              <spark-opts>--num-executors 4 --queue default</spark-opts>
+              <arg>--inputDataPath</arg>
+              <arg>${inputDataPath}</arg>
+              <arg>--outputPath</arg>
+              <arg>${outputPath}</arg>
+              <arg>--stringPattern</arg>
+              <arg>${stringPattern}</arg>
+        </spark>
+        <ok to='SparkKmeanProcess1' />
+        <error to='kill' />
+    </action>
+    <action name='SparkKmeanProcess1'>
+        <spark xmlns="uri:oozie:spark-action:0.1">
+              <job-tracker>${jobTracker}</job-tracker>
+              <name-node>${nameNode}</name-node>
+              <prepare>
+                     <delete path='${outputDir}' />
+              </prepare>
+              <master>${master}</master>
+              <name>${name}</name>
+              <class>${MainClass}</class>
+              <jar>${jar}</jar>
+              <spark-opts>--num-executors 4 --queue default</spark-opts>
+              <arg>--maxIterations</arg>
+              <arg>${maxIterations}</arg>
+              <arg>--inputPath</arg>
+              <arg>${inputPath}</arg>
+              <arg>--outputPath</arg>
+              <arg>${outputPath}</arg>
+              <arg>--K</arg>
+              <arg>${K}</arg>
+              <arg>--initSteps</arg>
+              <arg>${initSteps}</arg>
+              <arg>--initMode</arg>
+              <arg>${initMode}</arg>
+              <arg>--tol</arg>
+              <arg>${tol}</arg>
+              <arg>--seed</arg>
+              <arg>${seed}</arg>
+        </spark>
+        <ok to='end' />
+        <error to='kill' />
+    </action>
+	<kill name="kill">
+		<message>Task failed, error message[${wf:errorMessage()}]</message>
+	</kill>
+	<end name='end'/>
+</workflow-app>

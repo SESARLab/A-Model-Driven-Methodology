@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:list="http://www.daml.org/services/owl-s/1.2/generic/ObjectList.owl#"
+    xmlns:expr="http://www.daml.org/services/owl-s/1.2/generic/Expression.owl#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+    xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns="http://localhost:9000/assets/BDMOntologies/DataCleaning.owls#"
+    xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xml:base="http://localhost:9000/assets/BDMOntologies/DataCleaning.owls#">
+  <service:Service rdf:ID="DataCleaningService">
+    <service:supports>
+      <grounding:WsdlGrounding rdf:ID="DataCleaningGrounding"/>
+    </service:supports>
+    <service:describedBy>
+      <process:CompositeProcess rdf:ID="DataCleaningProcess"/>
+    </service:describedBy>
+    <service:presents>
+      <profile:Profile rdf:ID="DataCleaningProfile"/>
+    </service:presents>
+  </service:Service>
+  <profile:Profile rdf:about="#DataCleaningProfile">
+    <service:presentedBy rdf:resource="#DataCleaningService"/>
+  </profile:Profile>
+  <process:CompositeProcess rdf:about="#DataCleaningProcess">
+    <process:composedOf>
+      <process:Sequence>
+        <process:components>
+          <process:ControlConstructBag>
+            <list:first>
+              <process:Perform rdf:about="Perform0"/>
+            </list:first>
+            <list:rest>
+              <process:ControlConstructBag>
+                <list:first>
+                  <process:Perform rdf:about="Perform1"/>
+                </list:first>
+                <list:rest rdf:resource="http://www.daml.org/services/owl-s/1.2/generic/ObjectList.owl#nil"/>
+              </process:ControlConstructBag>
+            </list:rest>
+          </process:ControlConstructBag>
+        </process:components>
+      </process:Sequence>
+    </process:composedOf>
+    <service:describes rdf:resource="#DataCleaningService"/>
+  </process:CompositeProcess>
+  <process:Perform rdf:about="Perform0">
+    <process:process rdf:resource="http://localhost:9000/assets/BDMOntologies/SparkClean.owl#SparkCleanProcess"/>
+  </process:Perform>
+  <process:Perform rdf:about="Perform1">
+    <process:process rdf:resource="http://localhost:9000/assets/BDMOntologies/SparkKmean.owl#SparkKmeanProcess"/>
+  </process:Perform>
+  <grounding:WsdlGrounding rdf:about="#DataCleaningGrounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="http://localhost:9000/assets/BDMOntologies/SparkKmean.owl#SparkKmeanAtomicProcessGrounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="http://localhost:9000/assets/BDMOntologies/SparkClean.owl#SparkCleanAtomicProcessGrounding"/>
+    <service:supportedBy rdf:resource="#DataCleaningService"/>
+  </grounding:WsdlGrounding>
+</rdf:RDF>
+

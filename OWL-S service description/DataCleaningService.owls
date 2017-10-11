@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://localhost/services/1.1/DataCleaningService.owls"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:process="http://www.daml.org/services/owl-s/1.1/Process.owl#"
+    xmlns:list="http://www.daml.org/services/owl-s/1.1/generic/ObjectList.owl#"
+    xmlns:service="http://www.daml.org/services/owl-s/1.1/Service.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:profile="http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:grounding="http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+    xmlns:expression="http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:bdmo="http://localhost:9000/assets/BDMOntologies/BDMOntology.owl#"
+  xml:base="http://localhost/services/1.1/DataCleaningService.owls">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.1/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.1/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.1/Grounding.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.1/Process.owl"/>
+    <owl:imports rdf:resource="http://localhost:9000/assets/BDMOntologies/BDMOntology.owl"/>
+  </owl:Ontology>
+  
+  <!-- Service -->
+  <service:Service rdf:ID="DataCleaningService">
+    <service:presents>
+      <profile:Profile rdf:ID="DataCleaningProfile"/>
+    </service:presents>
+    <service:describedBy>
+      <process:AtomicProcess rdf:ID="DataCleaningProcess"/>
+    </service:describedBy>
+    <service:supports>
+      <grounding:WsdlGrounding rdf:ID="DataCleaningGrounding"/>
+    </service:supports>
+  </service:Service>
+  
+    <!-- Profile -->
+  <profile:Profile rdf:about="#DataCleaningProfile">
+    <service:presentedBy rdf:resource="#DataCleaningService"/>
+    <profile:serviceName>DataCleaningServiceProfile</profile:serviceName>
+    <profile:textDescription>Auto generato da file:DataCleaningService.wsdl</profile:textDescription>
+
+  <!-- Classificazione-->  
+    <profile:serviceCategory>
+<profile:categoryName> Data_Preparation.KnowledgeBaseElicitation.DataExpansionandCorrection.RemoveMissingValues </profile:categoryName>
+<profile:taxonomy> http://www.example.com/toreador/BDMOntologies/TDM.json
+</profile:taxonomy>
+</profile:serviceCategory>
+    
+    <!-- esempio di descrizione di parametri non funzionali (che non sono necessari per l'esecuzione del servizio), sono opzionali-->  
+    
+    <!-- specification of quality rating for profile -->
+    <!--profile:serviceParameter>
+      <profile:ServiceParameter>
+	<profile:serviceParameterName rdf:datatype="&xsd;#string">
+	  SomeRating
+	</profile:serviceParameterName>
+	<profile:sParameter rdf:resource="http://127.0.0.1/BDMOntologies/BDMOntology.owl#qualityRating_Good"/>
+      </profile:ServiceParameter>
+    </profile:serviceParameter-->
+    <profile:hasInput rdf:resource="#normalization"/>
+    <profile:hasInput rdf:resource="#datasetURI"/>
+    <profile:hasOutput rdf:resource="#normalizedDatasetURI"/>
+  </profile:Profile>
+  
+    <!-- Process -->
+  <process:AtomicProcess rdf:about="#DataCleaningProcess">
+    <service:describes rdf:resource="#DataCleaningService"/>
+    <process:hasInput>
+      <process:Input rdf:ID="normalization">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">
+      	  		http://127.0.0.1/BDMOntologies/BDMOntology.owl#Normalization
+        </process:parameterType>
+      </process:Input>
+    </process:hasInput>    
+    <process:hasInput>
+        <process:Input rdf:ID="datasetURI">
+        	<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">
+        		http://127.0.0.1/BDMOntologies/BDMOntology.owl#Dataset
+        	</process:parameterType>
+      	</process:Input>
+    </process:hasInput>  
+    <process:hasOutput>
+      <process:Output rdf:ID="normalizedDatasetURI">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">
+        		http://127.0.0.1/BDMOntologies/BDMOntology.owl#Dataset
+        </process:parameterType>
+      </process:Output>    
+    </process:hasOutput>  
+  </process:AtomicProcess>
+  
+  <!-- Grounding -->  
+  <grounding:WsdlGrounding rdf:about="#DataCleaningGrounding">
+    <service:supportedBy rdf:resource="#DataCleaningService"/>
+    <grounding:hasAtomicProcessGrounding>
+      <grounding:WsdlAtomicProcessGrounding rdf:ID="AtomicProcessGrounding"/>
+    </grounding:hasAtomicProcessGrounding>
+  </grounding:WsdlGrounding>
+  <grounding:WsdlAtomicProcessGrounding rdf:about="#AtomicProcessGrounding">
+    <grounding:owlsProcess rdf:resource="#DataCleaningProcess"/>
+    <grounding:wsdlOperation>
+      <grounding:WsdlOperationRef>
+        <grounding:operation rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >file:DataCleaningService.wsdl#getDataCleaning</grounding:operation>
+        <grounding:portType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >file:DataCleaningService.wsdl#DataCleaningServiceSOAP</grounding:portType>
+      </grounding:WsdlOperationRef>
+    </grounding:wsdlOperation>
+    <grounding:wsdlDocument rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">
+    	file:DataCleaningService.wsdl
+    </grounding:wsdlDocument>
+    <grounding:wsdlInputMessage rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">
+    	http://www.example.org/DataCleaningService/#getDataCleaningRequest
+    </grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">
+    	http://www.example.org/DataCleaningService/#getDataCleaningResponse
+    </grounding:wsdlOutputMessage>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:owlsParameter rdf:resource="#normalization"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">
+        	file:DataCleaningService.wsdl#normalization
+        </grounding:wsdlMessagePart>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:owlsParameter rdf:resource="#datasetURI"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">
+ 			file:DataCleaningService.wsdl#datasetURI
+ 		</grounding:wsdlMessagePart>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlOutput>
+      <grounding:WsdlOutputMessageMap>
+        <grounding:owlsParameter rdf:resource="#normalizedDatasetURI"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">
+        	file:DataCleaningService.wsdl#normDatasetURI
+        </grounding:wsdlMessagePart>
+      </grounding:WsdlOutputMessageMap>
+    </grounding:wsdlOutput>
+  </grounding:WsdlAtomicProcessGrounding>
+</rdf:RDF>

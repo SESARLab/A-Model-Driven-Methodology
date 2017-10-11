@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:list="http://www.daml.org/services/owl-s/1.2/generic/ObjectList.owl#"
+    xmlns:expr="http://www.daml.org/services/owl-s/1.2/generic/Expression.owl#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+    xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns="http://localhost:9000/assets/BDMOntologies/KmeanElbow.owls#"
+    xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xml:base="http://localhost:9000/assets/BDMOntologies/KmeanElbow.owls#">
+  <service:Service rdf:ID="KmeanElbowService">
+    <service:supports>
+      <grounding:WsdlGrounding rdf:ID="KmeanElbowGrounding"/>
+    </service:supports>
+    <service:describedBy>
+      <process:CompositeProcess rdf:ID="KmeanElbowProcess"/>
+    </service:describedBy>
+    <service:presents>
+      <profile:Profile rdf:ID="KmeanElbowProfile"/>
+    </service:presents>
+  </service:Service>
+  <profile:Profile rdf:about="#KmeanElbowProfile">
+    <service:presentedBy rdf:resource="#KmeanElbowService"/>
+  </profile:Profile>
+  <process:CompositeProcess rdf:about="#KmeanElbowProcess">
+    <process:composedOf>
+      <process:Sequence>
+        <process:components>
+          <process:ControlConstructBag>
+            <list:first>
+              <process:Perform rdf:about="Perform0"/>
+            </list:first>
+            <list:rest>
+              <process:ControlConstructBag>
+                <list:first>
+                  <process:Split-Join>
+                    <process:components>
+                      <process:ControlConstructBag>
+                        <list:first>
+                          <process:Perform rdf:about="Perform1"/>
+                        </list:first>
+                        <list:rest>
+                          <process:ControlConstructBag>
+                            <list:first>
+                              <process:Perform rdf:about="Perform2"/>
+                            </list:first>
+                            <list:rest>
+                              <process:ControlConstructBag>
+                                <list:first>
+                                  <process:Perform rdf:about="Perform3"/>
+                                </list:first>
+                                <list:rest>
+                                  <process:ControlConstructBag>
+                                    <list:first>
+                                      <process:Perform rdf:about="Perform4"/>
+                                    </list:first>
+                                    <list:rest>
+                                      <process:ControlConstructBag>
+                                        <list:first>
+                                          <process:Perform rdf:about="Perform5"/>
+                                        </list:first>
+                                        <list:rest>
+                                          <process:ControlConstructBag>
+                                            <list:first>
+                                              <process:Perform rdf:about="Perform6"/>
+                                            </list:first>
+                                            <list:rest>
+                                              <process:ControlConstructBag>
+                                                <list:first>
+                                                  <process:Perform rdf:about="Perform7"/>
+                                                </list:first>
+                                                <list:rest>
+                                                  <process:ControlConstructBag>
+                                                    <list:first>
+                                                      <process:Perform rdf:about="Perform8"/>
+                                                    </list:first>
+                                                    <list:rest>
+                                                      <process:ControlConstructBag>
+                                                        <list:first>
+                                                          <process:Perform rdf:about="Perform9"/>
+                                                        </list:first>
+                                                        <list:rest>
+                                                          <process:ControlConstructBag>
+                                                            <list:first>
+                                                              <process:Perform rdf:about="Perform10"/>
+                                                            </list:first>
+                                                            <list:rest rdf:resource="http://www.daml.org/services/owl-s/1.2/generic/ObjectList.owl#nil"/>
+                                                          </process:ControlConstructBag>
+                                                        </list:rest>
+                                                      </process:ControlConstructBag>
+                                                    </list:rest>
+                                                  </process:ControlConstructBag>
+                                                </list:rest>
+                                              </process:ControlConstructBag>
+                                            </list:rest>
+                                          </process:ControlConstructBag>
+                                        </list:rest>
+                                      </process:ControlConstructBag>
+                                    </list:rest>
+                                  </process:ControlConstructBag>
+                                </list:rest>
+                              </process:ControlConstructBag>
+                            </list:rest>
+                          </process:ControlConstructBag>
+                        </list:rest>
+                      </process:ControlConstructBag>
+                    </process:components>
+                  </process:Split-Join>
+                </list:first>
+                <list:rest>
+                  <process:ControlConstructBag>
+                    <list:first>
+                      <process:Perform rdf:about="Perform11"/>
+                    </list:first>
+                    <list:rest>
+                      <process:ControlConstructBag>
+                        <list:first>
+                          <process:Perform rdf:about="Perform12"/>
+                        </list:first>
+                        <list:rest rdf:resource="http://www.daml.org/services/owl-s/1.2/generic/ObjectList.owl#nil"/>
+                      </process:ControlConstructBag>
+                    </list:rest>
+                  </process:ControlConstructBag>
+                </list:rest>
+              </process:ControlConstructBag>
+            </list:rest>
+          </process:ControlConstructBag>
+        </process:components>
+      </process:Sequence>
+    </process:composedOf>
+    <service:describes rdf:resource="#KmeanElbowService"/>
+  </process:CompositeProcess>
+  <process:Perform rdf:about="Perform0">
+    <process:process rdf:resource="http://localhost:9000/assets/BDMOntologies/SparkClean.owl#SparkCleanProcess"/>
+  </process:Perform>
+  <process:Perform rdf:about="Perform1">
+    <process:process rdf:resource="http://localhost:9000/assets/BDMOntologies/SparkKmean.owl#SparkKmeanProcess"/>
+  </process:Perform>
+  <process:Perform rdf:about="Perform2">
+    <process:process rdf:resource="http://localhost:9000/assets/BDMOntologies/SparkKmean.owl#SparkKmeanProcess"/>
+  </process:Perform>
+  <process:Perform rdf:about="Perform3">
+    <process:process rdf:resource="http://localhost:9000/assets/BDMOntologies/SparkKmean.owl#SparkKmeanProcess"/>
+  </process:Perform>
+  <process:Perform rdf:about="Perform4">
+    <process:process rdf:resource="http://localhost:9000/assets/BDMOntologies/SparkKmean.owl#SparkKmeanProcess"/>
+  </process:Perform>
+  <process:Perform rdf:about="Perform5">
+    <process:process rdf:resource="http://localhost:9000/assets/BDMOntologies/SparkKmean.owl#SparkKmeanProcess"/>
+  </process:Perform>
+  <process:Perform rdf:about="Perform6">
+    <process:process rdf:resource="http://localhost:9000/assets/BDMOntologies/SparkKmean.owl#SparkKmeanProcess"/>
+  </process:Perform>
+  <process:Perform rdf:about="Perform7">
+    <process:process rdf:resource="http://localhost:9000/assets/BDMOntologies/SparkKmean.owl#SparkKmeanProcess"/>
+  </process:Perform>
+  <process:Perform rdf:about="Perform8">
+    <process:process rdf:resource="http://localhost:9000/assets/BDMOntologies/SparkKmean.owl#SparkKmeanProcess"/>
+  </process:Perform>
+  <process:Perform rdf:about="Perform9">
+    <process:process rdf:resource="http://localhost:9000/assets/BDMOntologies/SparkKmean.owl#SparkKmeanProcess"/>
+  </process:Perform>
+  <process:Perform rdf:about="Perform10">
+    <process:process rdf:resource="http://localhost:9000/assets/BDMOntologies/SparkKmean.owl#SparkKmeanProcess"/>
+  </process:Perform>
+  <process:Perform rdf:about="Perform11">
+    <process:process rdf:resource="http://localhost:9000/assets/BDMOntologies/Elbow.owl#ElbowProcess"/>
+  </process:Perform>
+  <process:Perform rdf:about="Perform12">
+    <process:process rdf:resource="http://localhost:9000/assets/BDMOntologies/SparkKmean.owl#SparkKmeanProcess"/>
+  </process:Perform>
+  <grounding:WsdlGrounding rdf:about="#KmeanElbowGrounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="http://localhost:9000/assets/BDMOntologies/Elbow.owl#ElbowAtomicProcessGrounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="http://localhost:9000/assets/BDMOntologies/SparkKmean.owl#SparkKmeanAtomicProcessGrounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="http://localhost:9000/assets/BDMOntologies/SparkClean.owl#SparkCleanAtomicProcessGrounding"/>
+    <service:supportedBy rdf:resource="#KmeanElbowService"/>
+  </grounding:WsdlGrounding>
+</rdf:RDF>
+

@@ -1,0 +1,610 @@
+{
+    "@id": "http://www.toreador-project.eu/TDM/project-spec/mycustomid",
+    "@context": {
+        "s": "http://schema.org/",
+        "tdm": "http://www.toreador-project.eu/TDM/"
+    },
+    "tdm:targetDataSources": [
+        "combined-simplified.csv"
+    ],
+    "tdm:anagraphic": {
+        "tdm:firstname": "",
+        "tdm:lastname": "",
+        "tdm:email": "",
+        "tdm:affiliation": "SAP",
+        "tdm:role": "",
+        "tdm:project_title": "SAP TDS",
+        "tdm:project_description": "TDS: security incident analysis through usage of anomaly detection analytics. The major challenge when searching for security incidents lies in the ability either to detect a deviation from a normal, standard behavior (unplanned anomalous activity) during or outside of an exceptionnal process (planned anomalous activity), or to detect regular malicious activity merged into the normal state of op- erations (unplanned ordinary activity such as advanced persistent threat or repeated fraud). Event-based anomaly detection however tend to generate a lot of alerts, leading in turn to a large investigation effort for security experts."
+    },
+    "tdm:representation": {
+        "@id": "http://www.toreador-project.eu/TDM/project-spec/areaRepre",
+        "@type": "tdm:Area",
+        "tdm:label": "Data Representation",
+        "tdm:incorporates": [
+            {
+                "@type": "tdm:Feature",
+                "tdm:label": "Data Source Model Type",
+                "tdm:constraint": "{}",
+                "tdm:incorporates": [
+                    {
+                        "@type": "tdm:Feature",
+                        "tdm:label": "Data Structure",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:constraint": "{}",
+                                "tdm:label": "Semi-structured",
+                                "$$hashKey": "object:25"
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "tdm:Feature",
+                        "tdm:label": "Data Model",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": []
+                    },
+                    {
+                        "@type": "tdm:Feature",
+                        "tdm:label": "Data Type",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Feature",
+                                "tdm:constraint": "{}",
+                                "tdm:label": "text/csv",
+                                "$$hashKey": "object:81"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "@type": "tdm:Feature",
+                "tdm:label": "Data Storage Model Type",
+                "tdm:constraint": "{}",
+                "tdm:incorporates": [
+                    {
+                        "@type": "tdm:Feature",
+                        "tdm:label": "Data Structure",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": []
+                    },
+                    {
+                        "@type": "tdm:Feature",
+                        "tdm:label": "Data Model",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": []
+                    },
+                    {
+                        "@type": "tdm:Feature",
+                        "tdm:label": "Data Type",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": []
+                    }
+                ]
+            },
+            {
+                "@type": "tdm:Feature",
+                "tdm:label": "Data Source Property",
+                "tdm:constraint": "{}",
+                "tdm:incorporates": [
+                    {
+                        "@type": "tdm:Feature",
+                        "tdm:label": "Coherence Model",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": []
+                    },
+                    {
+                        "@type": "tdm:Feature",
+                        "tdm:label": "Data Management",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": []
+                    },
+                    {
+                        "@type": "tdm:Feature",
+                        "tdm:label": "Partitioning",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": []
+                    }
+                ]
+            },
+            {
+                "@type": "tdm:Feature",
+                "tdm:label": "Data Storage Property",
+                "tdm:constraint": "{}",
+                "tdm:incorporates": [
+                    {
+                        "@type": "tdm:Feature",
+                        "tdm:label": "Coherence Model",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": []
+                    },
+                    {
+                        "@type": "tdm:Feature",
+                        "tdm:label": "Data Management",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": []
+                    },
+                    {
+                        "@type": "tdm:Feature",
+                        "tdm:label": "Partitioning",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": []
+                    }
+                ]
+            }
+        ]
+    },
+    "tdm:preparation": {
+        "@id": "http://www.toreador-project.eu/TDM/project-spec/areaPreparation",
+        "@type": "tdm:Area",
+        "tdm:label": "Data Preparation",
+        "tdm:incorporates": [
+            {
+                "@type": "tdm:Goal",
+                "tdm:label": "Knowledge Base Elicitation",
+                "tdm:constraint": "{}",
+                "tdm:incorporates": [
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Data Reduction",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": []
+                    },
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Data Expansion and Correction",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Checkbox",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:constraint": "{}",
+                                "tdm:label": "Remove missing values",
+                                "$$hashKey": "object:353"
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Data Transformation",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": []
+                    },
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Data Cleaning and Integration",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:constraint": "{}",
+                                "tdm:label": "Scale Conversion",
+                                "$$hashKey": "object:440"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "@type": "tdm:Goal",
+                "tdm:label": "Anonymization",
+                "tdm:constraint": "{}",
+                "tdm:incorporates": [
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Anonymization Model",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": []
+                    },
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Anonymization Techniques",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:label": "Hashing",
+                                "tdm:constraint":
+"{\"Algorithm\": \"SHA−256\",\"Target\": \"UserID\"}", "tdm:label": "Hashing"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "tdm:analytics": {
+        "@id": "http://www.toreador-project.eu/TDM/project-spec/area-analytics",
+        "@type": "tdm:Area",
+        "tdm:label": "Data Analytics",
+        "tdm:incorporates": [
+            {
+                "@type": "tdm:Goal",
+                "tdm:label": "Analytics Aim",
+                "tdm:constraint": "{ \"percentage\": {\"value\":23}}",
+                "tdm:incorporates": [
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Task",
+                        "tdm:visualisationType": "Checkbox",
+                        "tdm:constraint": "{}",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:label": "Crisp Clustering",
+                                "$$hashKey": "object:548"
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Models",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Checkbox",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:label": "Prescriptive",
+                                "$$hashKey": "object:616"
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Learning Approach",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": []
+                    }
+                ]
+            },
+            {
+                "@type": "tdm:Goal",
+                "tdm:constraint": "{}",
+                "tdm:label": "Analytics Quality",
+                "tdm:incorporates": [
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:constraint": "{}",
+                        "tdm:label": "True Positive Rate",
+                        "tdm:visualisationType": "Slider",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:constraint": "{}",
+                                "tdm:value": 1
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "True Negative Rate",
+                        "tdm:constraint": "{ \"percentage\": {\"value\":23}}",
+                        "tdm:visualisationType": "Slider",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:constraint": "{}",
+                                "tdm:value": 0.5
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Positive Prediction Rate",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Slider",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:constraint": "{}",
+                                "tdm:value": 0
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "False Positive Rate",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Slider",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:constraint": "{}",
+                                "tdm:value": 0
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Root Mean Square Error",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Slider",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:constraint": "{}",
+                                "tdm:value": 0
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Mean Absolute Error",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Slider",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:constraint": "{}",
+                                "tdm:value": 0
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Overall Accuracy",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Slider",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:constraint": "{}",
+                                "tdm:value": 0
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "K Coefficient",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Slider",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:constraint": "{}",
+                                "tdm:value": 0
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "tdm:processing": {
+        "@id": "http://www.toreador-project.eu/TDM/project-spec/area-processing",
+        "@type": "tdm:Area",
+        "tdm:label": "Data Processing",
+        "tdm:incorporates": [
+            {
+                "@type": "tdm:Goal",
+                "tdm:label": "Mode",
+                "tdm:incorporates": [
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Analysis Goal",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": []
+                    },
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Interaction",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": []
+                    }
+                ]
+            },
+            {
+                "@type": "tdm:Goal",
+                "tdm:label": "Performance",
+                "tdm:constraint": "{}",
+                "tdm:incorporates": [
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Data Storage Consistency",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Slider",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:constraint": "{}",
+                                "tdm:value": 0
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Elasticity",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Slider",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:constraint": "{}",
+                                "tdm:value": 0
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Latency",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Slider",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:constraint": "{}",
+                                "tdm:value": 0
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Availability",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Slider",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:constraint": "{}",
+                                "tdm:value": 0
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Operational Flexibility",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Slider",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:constraint": "{}",
+                                "tdm:value": 0
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Security",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Slider",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:constraint": "{}",
+                                "tdm:value": 0
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "tdm:display": {
+        "@id": "http://www.toreador-project.eu/TDM/project-spec/area-display",
+        "@type": "tdm:Area",
+        "tdm:label": "Data Display and Reporting",
+        "tdm:incorporates": [
+            {
+                "@type": "tdm:Goal",
+                "tdm:label": "Data Model",
+                "tdm:constraint": "{ \"percentage\": {\"value\":23}}",
+                "tdm:incorporates": [
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Dimensionality",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:constraint": "{}",
+                                "tdm:label": "2D",
+                                "$$hashKey": "object:906"
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Data Cardinality",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": []
+                    },
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Independent Data Type",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:constraint": "{}",
+                                "tdm:label": "Ratio",
+                                "$$hashKey": "object:958"
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "tdm:Indicator",
+                        "tdm:label": "Dependent Data Type",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Objective",
+                                "tdm:constraint": "{}",
+                                "tdm:label": "Nominal",
+                                "$$hashKey": "object:985"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "@type": "tdm:Feature",
+                "tdm:label": "Operativity",
+                "tdm:constraint": "{}",
+                "tdm:incorporates": [
+                    {
+                        "@type": "tdm:Feature",
+                        "tdm:label": "Interaction",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Feature",
+                                "tdm:constraint": "{}",
+                                "tdm:label": "Zoom",
+                                "$$hashKey": "object:1018"
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "tdm:Feature",
+                        "tdm:label": "User",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": []
+                    },
+                    {
+                        "@type": "tdm:Feature",
+                        "tdm:label": "Goal",
+                        "tdm:constraint": "{}",
+                        "tdm:visualisationType": "Option",
+                        "tdm:incorporates": [
+                            {
+                                "@type": "tdm:Feature",
+                                "tdm:constraint": "{}",
+                                "tdm:label": "Cluster/categorize",
+                                "$$hashKey": "object:1095"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
