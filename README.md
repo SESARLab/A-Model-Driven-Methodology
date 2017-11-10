@@ -20,13 +20,13 @@ Repository is organized in six main folders containing all building blocks and d
 
 - Folder [Declarative Model](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/Declarative%20model) contains the  declarative model in JSON-LD described in section 3.
 
-- Folder [OWL-S service composition](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/OWL-S%20service%20composition) contains all OWL-S files .
+- Folder [OWL-S service composition](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/OWL-S%20service%20composition) contains all OWL-S files that represents the workflows in the procedural model exposed in section 4.
 
-- Folder [OWL-S service description](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/OWL-S%20service%20description) contains all OWL-S files .
+- Folder [OWL-S service description](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/OWL-S%20service%20description) contains all OWL-S files that describe the services exposed in section 4.
 
-- Folder [Oozie workflow](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/Oozie%20workflow) contains all XML files exposed in section.
+- Folder [Oozie workflow](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/Oozie%20workflow) contains all XML files exposed in section 5.
 
-- Folder [Results](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/Results) contains all results files exposed in section .
+- Folder [Results](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/Results) contains all results exposed in section 6.
 
 
 
