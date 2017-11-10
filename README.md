@@ -16,7 +16,7 @@ This page contains a guide on how to download the experiments (results and confi
 
 Repository is organized in six main folders containing all building blocks and datasets at the basis of experimental evaluation and examples in the paper.
 
-- Folder [DataSet](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/Datasett) contains all datasets we have used for evaluation. 
+- Folder [DataSet](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/Dataset) contains all datasets we have used for evaluation. 
 
 - Folder [Declarative Model](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/Declarative%20model) contains the  declarative model in JSON-LD described in section 3.
 
