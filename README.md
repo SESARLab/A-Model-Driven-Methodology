@@ -10,23 +10,19 @@ trial-and-error approach. This problem is even exacerbated by the fact that curr
 
 Index Terms—Big Data, Model-Driven Architecture, OWL-S
 
+This repository is organized in 6 main folders containing all building blocks, configuration files, and datasets at the basis of experimental evaluation and examples in the paper "A Model-Driven Methodology for Big Data Analytics-as-a-Service".
 
-This page contains a guide on how to download the experiments (results and configuration files) exposed in the paper "A Model-Driven Methodology for Big Data Analytics-as-a-Service"
+- Folder [DataSet](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/Dataset) contains all datasets used in the experimental evaluation. 
 
+- Folder [Declarative Model](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/Declarative%20model) contains the declarative model in JSON-LD format described in Section 3.
 
-Repository is organized in six main folders containing all building blocks and datasets at the basis of experimental evaluation and examples in the paper.
+- Folder [OWL-S service composition](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/OWL-S%20service%20composition) contains all OWL-S compositions modeling the procedural models described in Section 4.
 
-- Folder [DataSet](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/Dataset) contains all datasets we have used for evaluation. 
+- Folder [OWL-S service description](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/OWL-S%20service%20description) contains all OWL-S services described in Section 4.
 
-- Folder [Declarative Model](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/Declarative%20model) contains the  declarative model in JSON-LD described in section 3.
+- Folder [Oozie workflow](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/Oozie%20workflow) contains all Oozie workflows described in Section 5.
 
-- Folder [OWL-S service composition](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/OWL-S%20service%20composition) contains all OWL-S files that represents the workflows in the procedural model exposed in section 4.
-
-- Folder [OWL-S service description](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/OWL-S%20service%20description) contains all OWL-S files that describe the services exposed in section 4.
-
-- Folder [Oozie workflow](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/Oozie%20workflow) contains all XML files exposed in section 5.
-
-- Folder [Results](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/Results) contains all results exposed in section 6.
+- Folder [Results](https://github.com/SESARLab/A-Model-Driven-Methodology/tree/master/Results) contains all results of the experimental evaluation described in Section 6.
 
 
 
