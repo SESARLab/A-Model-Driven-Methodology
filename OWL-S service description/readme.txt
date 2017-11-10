@@ -12,6 +12,6 @@ silhouette score. This means that either the final user can select a value for k
 can be used to infer it.
 
 
- 	* DataCleaningService.owls and describe the services of data cleaning in the data preparation step
+  * DataCleaningService.owls and describe the services of data cleaning in the data preparation step
   * SparkKmean.owls models the K-Mean algorithm coded using the spark library	
   * KmeanElbow.owls model the Elbow method algorithm used to evaluate the best K value coded using the spark library
