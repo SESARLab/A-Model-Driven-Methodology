@@ -15,3 +15,4 @@ can be used to infer it.
   * DataCleaningService.owls and describe the services of data cleaning in the data preparation step
   * SparkKmean.owls models the K-Mean algorithm coded using the spark library	
   * KmeanElbow.owls model the Elbow method algorithm used to evaluate the best K value coded using the spark library
+  * SparkClean.owl describes the activities of data cleaning for the inpute dataset (e.g remove null value, check the dimension cloumns etc)
