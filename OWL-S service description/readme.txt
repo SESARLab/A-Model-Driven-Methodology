@@ -1,18 +1,6 @@
-Set of OWL-S service description files
+OWL-S services
 
-Declarative model specification is used to select the set of compatible services that can be composed to build the Big Data 
-campaign. According to the three requirements described in the paper, our MBDAaaS methodology selects all SHA-256 services, 
-different instances of service k-means of Apache Spark, and all visualization services available on our platform, including 
-the ones provided by Zeppelin, for scatter-plot visualization. The specification of declarative constraints can further 
-affect the list of selected services. 
-
-The definition of constraint km of k-means affects service selection results. When km is not defined or is
-defined as a range (Figure 2), the list of compatible services also includes optimization services such as elbow method and
-silhouette score. This means that either the final user can select a value for km at procedural time or an optimization algorithm 
-can be used to infer it.
-
-
-  * DataCleaningService.owls and describe the services of data cleaning in the data preparation step
-  * SparkKmean.owls models the K-Mean algorithm coded using the spark library	
-  * KmeanElbow.owls model the Elbow method algorithm used to evaluate the best K value coded using the spark library
-  * SparkClean.owl describes the activities of data cleaning for the inpute dataset (e.g remove null value, check the dimension cloumns etc)
+* DataCleaningService.owls describes a service that provides data cleaning functionality (area data preparation)
+* SparkKmean.owls describes clustering service k-means implemented using the Spark library	(area data analytics)
+* KmeanElbow.owls describes service Elbow used to evaluate the best k for k-means algorithm implemented using the Spark library
+* SparkClean.owl describes the activities of data cleaning for the inpute dataset (e.g remove null value, check the dimension columns etc)
