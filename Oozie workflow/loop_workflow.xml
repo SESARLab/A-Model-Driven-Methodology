@@ -1,0 +1,232 @@
+<workflow-app name='KmeanElbowProcess' xmlns='uri:oozie:workflow:0.5'>
+
+    <parameters>
+
+        <property>
+
+            <name>counter</name>
+	    <value>0</value>
+        </property>
+
+    </parameters>
+
+
+
+    <start to='firstiteration' />
+
+<decision name="firstiteration">
+
+		 <switch>
+
+			 <case to="SparkCleanProcess">${(counter eq 0 )}</case>
+
+			 <case to="SparkKmeanProcess">${(counter gt 0 )}</case>
+
+			 <default to="kill" />
+
+		 </switch>
+
+	</decision>	
+
+
+    <action name='SparkCleanProcess'>
+
+        <spark xmlns="uri:oozie:spark-action:0.1">
+
+              <job-tracker>${jobTracker}</job-tracker>
+
+              <name-node>${nameNode}</name-node>
+
+              <prepare>
+
+                     <delete path='${sccPath}' />
+                     <delete path='${outputPathCleaner}' />
+
+              </prepare>
+
+              <master>${master}</master>
+
+              <name>${nameCleaner}</name>
+
+              <class>${MainClassCleaner}</class>
+
+              <jar>${jarCleaner}</jar>
+
+              <spark-opts>--num-executors 4 --queue default</spark-opts>
+
+              <arg>--inputDataPath</arg>
+
+              <arg>${inputDataPathCleaner}</arg>
+
+              <arg>--outputPath</arg>
+
+              <arg>${outputPathCleaner}</arg>
+
+              <arg>--stringPattern</arg>
+
+              <arg>${stringPattern}</arg>
+
+        </spark>
+
+        <ok to='SparkKmeanProcess' />
+
+        <error to='kill' />
+
+    </action>
+
+    <action name='SparkKmeanProcess'>
+
+        <spark xmlns="uri:oozie:spark-action:0.1">
+
+            <job-tracker>${jobTracker}</job-tracker>
+
+            <name-node>${nameNode}</name-node>
+
+            <prepare>
+
+                <delete path='${outputPathKmean}' />
+
+            </prepare>
+
+           
+
+            <master>${master}</master>
+
+            <name>${nameKmean}</name>
+
+            <class>${MainClassKmean}</class>
+
+            <jar>${jarKmean}</jar>
+
+            <spark-opts>--num-executors 4 --queue default</spark-opts>
+
+            <arg>--maxIterations</arg>
+
+            <arg>${maxIterations}</arg>
+
+            <arg>--inputPath</arg>
+
+            <arg>${inputPathKmean}</arg>
+
+            <arg>--outputPath</arg>
+
+            <arg>${outputPathKmean}</arg>
+
+            <arg>--sccPath</arg>
+
+            <arg>${sccPath}</arg>
+
+            <arg>--k</arg>
+
+            <arg>${counter+1}</arg>
+
+        </spark>
+
+        <ok to='ElbowProcess' />
+
+        <error to='kill' />
+
+    </action>
+
+    <action name='ElbowProcess'>
+
+        <spark xmlns="uri:oozie:spark-action:0.1">
+
+              <job-tracker>${jobTracker}</job-tracker>
+
+              <name-node>${nameNode}</name-node>
+
+             <master>${master}</master>
+
+              <name>${nameElbow}</name>
+
+              <class>${MainClassElbow}</class>
+
+              <jar>${jarElbow}</jar>
+
+              <spark-opts>--num-executors 4 --queue default</spark-opts>
+
+              <arg>--sccPath</arg>
+
+              <arg>${sccPath}</arg>
+
+ 	      <arg>--optimizedK</arg>
+
+              <arg>${optimizedK}</arg>
+
+        </spark>
+
+        <ok to='datacheck' />
+
+        <error to='kill' />
+
+    </action>
+
+    <action name='datacheck'>
+
+        <java> 
+
+            <job-tracker>${jobTracker}</job-tracker>
+
+            <name-node>${nameNode}</name-node>
+
+            <main-class>${MainClassDatacheck}</main-class>
+
+            <arg>--optimizedK</arg>
+
+            <arg>${optimizedK}</arg>
+
+	    <archive>${archive}</archive>
+
+            <capture-output /> 
+
+        </java> 
+
+        <ok to='datacheckswitch' />
+
+        <error to='kill' />
+
+    </action>	
+
+	
+
+ <action name="loop">
+        <sub-workflow>
+            <app-path>${wf:appPath()}</app-path>
+            <propagate-configuration/>
+	     <configuration>
+                <property>
+                    <name>counter</name>
+                    <value>${counter + 1}</value>
+                </property>
+            </configuration>
+        </sub-workflow>
+        <ok to="end"/>
+        <error to="kill" />
+    </action>
+
+
+
+	<decision name="datacheckswitch">
+
+		 <switch>
+
+			 <case to="loop">${(wf:actionData('datacheck')['elbow'] == "false" )}</case>
+
+			 <case to="end">${(wf:actionData('datacheck')['elbow'] == "true" )}</case>
+
+			 <default to="kill" />
+
+		 </switch>
+
+	</decision>	
+
+    <kill name="kill">
+
+        <message>Task failed, error message[${wf:errorMessage('error')}]</message>
+
+    </kill>
+
+    <end name='end'/>
+
+</workflow-app>

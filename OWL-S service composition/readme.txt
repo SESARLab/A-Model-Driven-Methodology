@@ -1,8 +1,7 @@
 OWL-S service compositions
 
-â€¢ Comp_sequential_workflow.owls models the service composition in Figure 10(a). 
+• Comp_sequential_workflow.owls models the service composition in Figure 10(a). 
 
-â€¢ Comp_parallel_workflow.owls models the service composition in Figure 10(b). 
+• Comp_loop_workflow.owls models the service composition in Figure 10(b). 
 
-â€¢ Comp_while_workflow.owls models the service composition in Figure 10(c). 
-
+• Comp_parallel_workflow.owls models the service composition in Figure 10(c). 
